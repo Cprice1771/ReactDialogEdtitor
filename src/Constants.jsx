@@ -6,7 +6,7 @@ export class ActionType {
 }
 
 export class NodeType {
-    static Dialoge = 'Dialoge';
+    static Dialogue = 'Dialogue';
     static Cutscene = 'Cutscene';
     static Puzzle = 'Puzzle';
     static Start = 'Start';
