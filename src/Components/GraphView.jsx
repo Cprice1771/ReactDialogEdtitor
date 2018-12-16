@@ -12,7 +12,6 @@ class GraphView extends Component {
     constructor() {
       super();
       let startId = '1';
-      let endId = '2';
       this.state = {
         Nodes: GameStore.getGraph(),
         Characters: GameStore.getCharacters(),
@@ -21,7 +20,15 @@ class GraphView extends Component {
     }
   
     componentDidMount() {
-      
+      GameStore.addChangeListener(this.onGameStoreChange);
+    }
+
+    componentWillUnmount() {
+      GameStore.removeChangeListener(this.onGameStoreChange);
+    }
+    
+    onGameStoreChange = (newState) => {
+      this.setState({ Nodes: GameStore.getGraph() });
     }
   
     RemoveNode = (id) => {
@@ -36,6 +43,8 @@ class GraphView extends Component {
       GameStore.updateGraph(NodeCopy);
     }
   
+    
+
     AddNode = () => {
       var NodeCopy = _.cloneDeep(this.state.Nodes);
       NodeCopy.push({
@@ -80,8 +89,42 @@ class GraphView extends Component {
       GameStore.updateGraph(NodeCopy);
     }
   
-    NodeSelected = (node) => {
+    onCreateEdge = (from, to) =>  {
+      var NodeCopy = _.cloneDeep(this.state.Nodes);
+      var idx = _.findIndex(this.state.Nodes, item => item.id === from.id);
+      NodeCopy[idx].Actions.push({
+        id: uuidv1(),
+        Name: 'New Action',
+        Description: '',
+        EndAt: to.id,
+      });
   
+      this.setState({
+        Nodes: NodeCopy
+      });
+      GameStore.updateGraph(NodeCopy);
+    }
+
+    onCreateNode = (x, y) => {
+      var NodeCopy = _.cloneDeep(this.state.Nodes);
+      NodeCopy.push({
+        id: uuidv1(),
+        Name: 'New Node',
+        Description: '',
+        NodeType: NodeType.Dialogue,
+        Text: '',
+        x: x,
+        y: y,
+        Actions: [],
+        Conversation: []
+      });
+      this.setState({
+        Nodes: NodeCopy
+      });
+      GameStore.updateGraph(NodeCopy);
+    }
+
+    NodeSelected = (node) => {
       if(node != null) {
         this.setState({
           SelectedNode: node.id
@@ -102,10 +145,14 @@ class GraphView extends Component {
 
       return (
         <div>
+          <div className="graph-panel">
           <GameGraph Nodes={this.state.Nodes}
           selected={selectedNode}
           onSelectNode={this.NodeSelected}
-          onNodeChanged={this.onNodeChanged}/>
+          onNodeChanged={this.onNodeChanged}
+          onCreateNode={this.onCreateNode}
+          onCreateEdge={this.onCreateEdge}
+          />
           <div className="row">
             <div className="col-md-6">
             </div>
@@ -129,21 +176,19 @@ class GraphView extends Component {
               <div className="col-md-2 ">
                 {deleteButton}
               </div>
-          </div>
-          <br />
-          <div className="row">
-          <div className="col-md-12">
-             <NodeEditor 
-              AllNodes={this.state.Nodes} 
-              Node={this.state.Nodes.find(node => node.id === this.state.SelectedNode)} 
-              deleteNode={this.RemoveNode}
-              addAction={this.addAction}
-              onNodeChanged={this.onNodeChanged}
-              Characters={this.state.Characters}
-              />
+            </div>
+            </div>
+            <div className="editor-panel">
+            <NodeEditor 
+                AllNodes={this.state.Nodes} 
+                Node={this.state.Nodes.find(node => node.id === this.state.SelectedNode)} 
+                deleteNode={this.RemoveNode}
+                addAction={this.addAction}
+                onNodeChanged={this.onNodeChanged}
+                Characters={this.state.Characters}
+                />
              </div>
           </div>
-        </div>
       );
     }
   }

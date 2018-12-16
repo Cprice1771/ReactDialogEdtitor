@@ -1,4 +1,5 @@
 import { NodeType, ActionType } from '../Constants';
+import { EventEmitter } from 'events'
 
 var _state = {
     nodes: [
@@ -44,6 +45,15 @@ var _state = {
 }
 
 class GameStoreClass {
+
+    constructor() {
+        this.emitter = new EventEmitter();        
+    }
+
+    getGameState() {
+        return _state.gameState;
+    }
+
     getGraph() {
         return _state.nodes;
     }
@@ -58,6 +68,11 @@ class GameStoreClass {
 
     loadGame(game) {
         _state = game;
+        this.emitChange(_state);
+    }
+
+    updateGameState(gameState) {
+        _state.gameState = gameState;
     }
 
     updateCharacters(newChars) {
@@ -66,6 +81,18 @@ class GameStoreClass {
 
     updateGraph(newNodes) {
         _state.nodes = newNodes;
+    }
+
+    emitChange( data ) {
+        this.emitter.emit('GamestoreChange', data)
+    }
+
+    addChangeListener( callback ) {
+        this.emitter.on('GamestoreChange', callback)
+    }
+
+    removeChangeListener( callback ) {
+        this.emitter.removeListener('GamestoreChange', callback)
     }
 }
 

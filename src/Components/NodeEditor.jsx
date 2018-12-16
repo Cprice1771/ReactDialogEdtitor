@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
 import '../css/App.css';
-import Graph from 'react-graph-vis';
 import ActionEditor from './ActionEditor';
 import * as _ from 'lodash';
 import ConversationEditor from './ConversationEditor';
 const uuidv1 = require('uuid/v1');
 
 class NodeEditor extends Component {
-
-  constructor(props) {
-    super(props);
-  }
-
 
     IsDisabled(type) {
         return type === 'Start' || type === 'End'
@@ -45,7 +39,7 @@ class NodeEditor extends Component {
     var actionIdx = _.findIndex(this.props.Node.Conversation, item => item.id === dialogue.id);
     var nodeCpy = _.cloneDeep(this.props.Node);
     nodeCpy.Conversation[actionIdx] = dialogue;
-    this.props.onNodeChanged(nodeCpy)
+    this.props.onNodeChanged(nodeCpy);
   }
 
   onDialogueDeleted = (id) => {
@@ -63,72 +57,77 @@ class NodeEditor extends Component {
 
       
 
-      let actions = this.props.Node.Actions.map((a) => {
+      let actions = this.props.Node.Actions.map((a, i) => {
         return <ActionEditor
-                key={uuidv1()}
+                key={i}
                 Node={this.props.Node}
                 Nodes={this.props.AllNodes} 
                 Action={a}
                 onActionChange={this.onActionChange}
                 deleteAction={this.deleteAction}
                 />;
-    });
+        });
 
     return (
-      <div className="row borderBox">
-        <div className="col-md-6 pull-left">
-            <div className="row"><div className="col-md-12">
-                <label className="label-display">Name<input type="text" value={this.props.Node.Name} 
-                onChange={x =>{
-                    let copy = _.cloneDeep(this.props.Node);
-                    copy.Name = x.target.value;
-                    this.props.onNodeChanged(copy);
-                }}/></label>
-            </div></div>
-            <div className="row"><div className="col-md-12">
-                <label className="label-display">Description
-                    <input type="text" 
-                    value={this.props.Node.Description}
-                    onChange={x =>{
-                        let copy = _.cloneDeep(this.props.Node);
-                        copy.Description = x.target.value;
-                        this.props.onNodeChanged(copy);
-                    }}
-                /></label>
-            </div></div>
+        <div className="borderBox">
             <div className="row">
-                <div className="col-md-12">
-                <label className="label-display">Node type
-                    <select 
-                    value={this.props.Node.NodeType} 
-                    disabled={this.IsDisabled(this.props.Node.NodeType)}
-                    onChange={x =>{
-                        let copy = _.cloneDeep(this.props.Node);
-                        copy.NodeType = x.target.value;
-                        this.props.onNodeChanged(copy);
-                    }}
-                    >
-                        <option value="Dialoge">Dialoge</option>
-                        <option value="Cutscene">Cutscene</option>
-                        <option value="Puzzle">Puzzle</option>
-                    </select>
-                </label>
+                <div className="col-md-12 pull-left">
+                    <div className="row">
+                    <div className="col-md-12">
+                        <label className="label-display">Name<input type="text" value={this.props.Node.Name} 
+                        onChange={x =>{
+                            let copy = _.cloneDeep(this.props.Node);
+                            copy.Name = x.target.value;
+                            this.props.onNodeChanged(copy);
+                        }}/></label>
+                    </div></div>
+                    <div className="row"><div className="col-md-12">
+                        <label className="label-display">Description
+                            <input type="text" 
+                            value={this.props.Node.Description}
+                            onChange={x =>{
+                                let copy = _.cloneDeep(this.props.Node);
+                                copy.Description = x.target.value;
+                                this.props.onNodeChanged(copy);
+                            }}
+                        /></label>
+                    </div></div>
+                    <div className="row">
+                        <div className="col-md-12">
+                        <label className="label-display">Node type
+                            <select 
+                            value={this.props.Node.NodeType} 
+                            disabled={this.IsDisabled(this.props.Node.NodeType)}
+                            onChange={x =>{
+                                let copy = _.cloneDeep(this.props.Node);
+                                copy.NodeType = x.target.value;
+                                this.props.onNodeChanged(copy);
+                            }}
+                            >
+                                <option value="Dialoge">Dialoge</option>
+                                <option value="Cutscene">Cutscene</option>
+                                <option value="Puzzle">Puzzle</option>
+                            </select>
+                        </label>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-12">
+                        {
+                            this.props.Node.Conversation.map((c, i) => {
+                                return <ConversationEditor 
+                                Dialogue={c}
+                                key={i}
+                                Characters={this.props.Characters}
+                                onDialogueChanged={this.onDialogueChanged}
+                                onDialogueDeleted={this.onDialogueDeleted}
+                                />
+                            })
+                        }
+                        
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div className="row">
-                <div className="col-md-12">
-                {
-                    this.props.Node.Conversation.map(c => {
-                        return <ConversationEditor 
-                        Dialogue={c}
-                        Characters={this.props.Characters}
-                        onDialogueChanged={this.onDialogueChanged}
-                        onDialogueDeleted={this.onDialogueDeleted}
-                        />
-                    })
-                }
-                
-            </div>
             </div>
             <div className="row">
                 <div className="col-md-12">
@@ -138,17 +137,21 @@ class NodeEditor extends Component {
                     </button>
                 </div>
             </div>
-        </div>
-        <div className="col-md-6">
-            {actions}
             <div className="row">
-                <button
-                    className="btn btn-primary pull-right" 
-                    onClick={() => {this.props.addAction(this.props.Node.id)}}>Add Action</button>
+                <h3>Actions</h3>            
             </div>
+            <div className="row">
+                {actions}
+            </div>
+            <div className="row">
+            <div className="col-md-12">
+                    <button
+                        className="btn btn-primary pull-right" 
+                        onClick={() => {this.props.addAction(this.props.Node.id)}}>Add Action</button>
+            </div>
+            </div>
+      
         </div>
-        
-      </div>
     );
   }
 }

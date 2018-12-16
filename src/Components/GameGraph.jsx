@@ -52,16 +52,15 @@ const GraphConfig =  {
 
 class GameGraph extends Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   nodeSelected = (event) => {
-    var { nodes, edges } = event;
+    var { nodes } = event;
     if(nodes.length > 0) {
       this.props.onSelected(nodes[0]);
     }
   }
+
+
+  
 
   render() {
 
@@ -88,7 +87,7 @@ class GameGraph extends Component {
 
     return (
       <div id='graph' className="App" style={{
-          height: '680px',
+          height: '850px',
       }}>
         <GraphView 
             nodeKey={NODE_KEY}
@@ -100,14 +99,14 @@ class GameGraph extends Component {
             nodeSubtypes={NodeSubtypes}
             edgeTypes={EdgeTypes}
             getViewNode={id => {
-                return _.find(nodes, x => x.id == id)
+                return _.find(nodes, x => x.id === id)
             }}
             onSelectNode={this.props.onSelectNode}
-            onCreateNode={x => {}}
+            onCreateNode={this.props.onCreateNode}
             onUpdateNode={this.props.onNodeChanged}
+            onCreateEdge={this.props.onCreateEdge}
             onDeleteNode={x => {}}
             onSelectEdge={x => {}}
-            onCreateEdge={x => {}}
             onSwapEdge={x => {}}
             onDeleteEdge={x => {}}
             graphControls={false}

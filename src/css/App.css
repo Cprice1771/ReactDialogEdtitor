@@ -1,3 +1,20 @@
+
+html {
+	height:100%;
+}
+
+body {
+	height: 100%
+}
+
+#root {
+	height:100%;
+}
+
+.content {
+	padding:20px
+}
+
 .app {
 	position: relative;
 	padding: 0 0 0 0;
@@ -40,10 +57,32 @@
   text-align: right;
 }
 
+.editor-panel {
+	position: fixed;
+	right:0;
+	top:0;
+	width: 750px;
+}
+
+.link {
+	cursor:pointer;
+	color: #007bff;
+}
+
+.link:hover {
+	text-decoration: underline;
+}
+
+.graph-panel {
+	width:100%;
+	height:100%;
+	padding-right:750px;
+}
+
 .borderBox {
   border: lightgrey 1px solid;
-  margin: 5px;
-  padding: 10px
+  margin-right: 5px;
+  padding: 0 40px 50px 30px;
 }
 
 .sidebar {
@@ -52,37 +91,15 @@
 	left: 0;
 	width: 100px;
 	height: 100%;
-	background-color: white;
-	color: black;
+	background-color: #2C343F;
+	color: white;
 	z-index: 3;
-
-	/* &__content {
-		position: relative;
-		width: 100%;
-		height: calc(100% - 60px);
-		overflow: auto;
-	}
-
-	&__logo {
-		position: relative;
-		width: 100%;
-		height: auto;
-
-        img {
-        	width: 100%;
-        }
-	} */
 }
 
 .center-content {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-}
-
-.pull-right {
-	right: 10px;
-	position: absolute;
 }
 
 .sidebar__content {
@@ -117,42 +134,44 @@
 	list-style: none;
 	font-size: 14px;
 	line-height: 20px;
+}
 
-	/* a {
-			display: block;
-	}
+.nav-main a {
+	display: block;
+	padding: 10px 10px 10px 10px;
+	font-size: 14px;
+	color: hsla(0,0%,100%,.5);
+}
 
-	&__active {
-		color: $white!important;
-	} */
+.nav-main a:hover {
+	background-color: #3e4a59;
+	color: white;
+	text-decoration: none;
+}
 
-	/* &__heading {
-			font-size: 12px;
-			font-weight: 600;
-			text-transform: uppercase;
-			color: rgba(255,255,255,0.5);
-			overflow: hidden;
-			cursor: pointer;
+.file-link {
+	display: block;
+	padding: 10px 10px 10px 10px;
+	font-size: 14px;
+	color: hsla(0,0%,100%,.5);
+}
 
-			&:hover {
-					background-color: $sidebar-dark;
-					color: $white;
-			}
+.file-link:hover {
+	background-color: #3e4a59;
+	color: white;
+	text-decoration: none;
+	cursor: pointer;
+}
 
-			a {
-					padding: 14px 20px 14px 20px;
-					color: rgba(255,255,255,0.5);
+.nav-main__active {
+	color: white !important;
+}
 
-					@include transition(background-color, .12s, ease-out);
-
-					&:hover {
-							background-color: $sidebar-dark;
-							color: $white;
-					}
-			}
-	} */
-
-	/* &__dashboard {
-			// padding: 14px 20px 14px 20px;
-	} */
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
 }

@@ -19,7 +19,6 @@ class SaveLoad extends Component {
 
     load(event) {
         var reader = new FileReader();
-        let me = this;
         reader.onload = function(progressEvent){
             var game = JSON.parse(this.result);
             GameStore.loadGame(game);
@@ -30,12 +29,12 @@ class SaveLoad extends Component {
     render() {
         return (
             <div style={{
-                padding:'50px'
+                padding:'20px'
             }}>
-           
+{/*            
             <h2>Save Game</h2>
             <button className='btn btn-primary' onClick={this.save}>Save</button>
-            
+             */}
 
             <h2>Load Game</h2>
             <span>Select file </span>

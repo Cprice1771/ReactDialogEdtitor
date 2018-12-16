@@ -14,6 +14,17 @@ class CharacterList extends Component {
         }
     }
 
+    componentDidMount() {
+        GameStore.addChangeListener(this.onGameStoreChange);
+    }
+  
+      componentWillUnmount() {
+        GameStore.removeChangeListener(this.onGameStoreChange);
+    }
+      
+    onGameStoreChange = (newState) => {
+        this.setState({ Characters: GameStore.getCharacters() });
+    }
 
     addCharacter = () => {
         var charactersClone = _.cloneDeep(this.state.Characters);
@@ -29,7 +40,7 @@ class CharacterList extends Component {
     }
 
     onDeleteCharacter = (characterId) => {
-        var idx = _.findIndex(this.state.Characters, x => x.id == characterId);
+        var idx = _.findIndex(this.state.Characters, x => x.id === characterId);
         var charactersClone = _.cloneDeep(this.state.Characters);
         charactersClone.splice(idx, 1);
         this.setState({
@@ -39,7 +50,7 @@ class CharacterList extends Component {
     }
 
     onCharacterChange = (character) => {
-        var idx = _.findIndex(this.state.Characters, x => x.id == character.id);
+        var idx = _.findIndex(this.state.Characters, x => x.id === character.id);
         var charactersClone = _.cloneDeep(this.state.Characters);
         charactersClone[idx] = character;
         this.setState({
@@ -50,11 +61,10 @@ class CharacterList extends Component {
 
     render() {
         return (
-            <div style={{
-                padding:'20px',
-                width:'100%',
-                height: '100%'
-            }}>
+            <div className='content'>
+            <div className='row'>
+            <h2>Characters</h2>
+            </div>
                 {
                     this.state.Characters.map(x => {
                         return <CharacterEditor Character={x} 
@@ -64,15 +74,11 @@ class CharacterList extends Component {
                     })
                 }
                 <div className="row" style={{
-                    wdith: '100%',
-                    padding: '10px',
+                    paddingTop: '10px',
                 }}>
-                    <button 
-                    style={{
-                        right:'10px',
-                        position: 'absolute'
-                    }}
-                    className='btn btn-primary' onClick={this.addCharacter}>Add Character</button>
+                    <div className='col-md-12'>
+                    <button className='btn btn-primary pull-right' onClick={this.addCharacter}>Add Character</button>
+                    </div>
                 </div>
             </div>
         );
