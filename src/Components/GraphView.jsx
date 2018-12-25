@@ -38,7 +38,8 @@ class GraphView extends Component {
         NodeCopy.splice(idx, 1);
       }
       this.setState({
-        Nodes: NodeCopy
+        Nodes: NodeCopy,
+        SelectedNode: NodeCopy[0].id
       })
       GameStore.updateGraph(NodeCopy);
     }
@@ -140,7 +141,7 @@ class GraphView extends Component {
       var selectedNode = _.find(this.state.Nodes, x => x.id === this.state.SelectedNode);
   
       let deleteButton = !this.IsDisabled(selectedNode.NodeType) ? 
-      (<button className="btn btn-danger" onClick={() => { this.props.deleteNode(this.props.Node.id)}}>Delete Node</button>)
+      (<button className="btn btn-danger" onClick={() => { this.RemoveNode(selectedNode.id)}}>Delete Node</button>)
         : '';
 
       return (

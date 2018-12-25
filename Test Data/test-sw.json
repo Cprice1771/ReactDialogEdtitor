@@ -1,0 +1,141 @@
+{
+	"nodes": [
+		{
+			"id": "1",
+			"Name": "Start Node",
+			"NodeType": "Start",
+			"Description": "Where the game starts",
+			"Conversation": [
+				{
+					"id": "1",
+					"Speaker": "narrator",
+					"Text": "Choose the light side",
+					"CharacterId": "3449e4d0-078a-11e9-ba9b-3bdce152c901"
+				},
+				{
+					"id": "3dbcdea0-078a-11e9-ba9b-3bdce152c901",
+					"Speaker": "narrator",
+					"Text": "Choose the dark side",
+					"CharacterId": "34b047c0-078a-11e9-ba9b-3bdce152c901"
+				}
+			],
+			"x": -0.04829823970794678,
+			"y": -337.48508071899414,
+			"Actions": [
+				{
+					"Id": "apples",
+					"EndAt": "476e4100-078a-11e9-ba9b-3bdce152c901",
+					"Name": "Light",
+					"Description": ""
+				},
+				{
+					"id": "5d484750-078a-11e9-ba9b-3bdce152c901",
+					"Name": "Dark",
+					"Description": "",
+					"EndAt": "47ea9cf0-078a-11e9-ba9b-3bdce152c901"
+				}
+			],
+			"title": "Start Node",
+			"type": "Start"
+		},
+		{
+			"id": "2",
+			"Name": "End Node",
+			"NodeType": "End",
+			"Description": "Where the game ends",
+			"Conversation": [
+				{
+					"id": "1",
+					"Speaker": "narrator",
+					"Text": "Goodbye World"
+				}
+			],
+			"x": 0,
+			"y": 100,
+			"Actions": []
+		},
+		{
+			"id": "476e4100-078a-11e9-ba9b-3bdce152c901",
+			"Name": "Light  Side",
+			"Description": "",
+			"NodeType": "Dialogue",
+			"Text": "",
+			"x": -181.67807006835938,
+			"y": -122.04532623291016,
+			"Actions": [
+				{
+					"id": "54317740-078a-11e9-ba9b-3bdce152c901",
+					"Name": "",
+					"Description": "",
+					"EndAt": "2"
+				}
+			],
+			"Conversation": [
+				{
+					"id": "4b7d60a0-078a-11e9-ba9b-3bdce152c901",
+					"Speaker": "narrator",
+					"Text": "Good, you choose the light side",
+					"CharacterId": "3449e4d0-078a-11e9-ba9b-3bdce152c901"
+				},
+				{
+					"id": "502da240-078a-11e9-ba9b-3bdce152c901",
+					"Speaker": "narrator",
+					"Text": "Noooo",
+					"CharacterId": "34b047c0-078a-11e9-ba9b-3bdce152c901"
+				}
+			],
+			"title": "New Node",
+			"type": "Dialogue"
+		},
+		{
+			"id": "47ea9cf0-078a-11e9-ba9b-3bdce152c901",
+			"Name": "Dark Side",
+			"Description": "",
+			"NodeType": "Dialogue",
+			"Text": "",
+			"x": 157.4092559814453,
+			"y": -125.71510314941406,
+			"Actions": [
+				{
+					"id": "6eafff60-078a-11e9-ba9b-3bdce152c901",
+					"Name": "New Action",
+					"Description": "",
+					"EndAt": "2"
+				}
+			],
+			"Conversation": [
+				{
+					"id": "62a12500-078a-11e9-ba9b-3bdce152c901",
+					"Speaker": "narrator",
+					"Text": "Good, feel the power run through you",
+					"CharacterId": "34b047c0-078a-11e9-ba9b-3bdce152c901"
+				},
+				{
+					"id": "62edbe60-078a-11e9-ba9b-3bdce152c901",
+					"Speaker": "narrator",
+					"Text": "How could you!",
+					"CharacterId": "3449e4d0-078a-11e9-ba9b-3bdce152c901"
+				}
+			],
+			"title": "New Node",
+			"type": "Dialogue"
+		}
+	],
+	"characters": [
+		{
+			"id": "narrator",
+			"Name": "Narrator",
+			"Description": "Narrator for the story"
+		},
+		{
+			"id": "3449e4d0-078a-11e9-ba9b-3bdce152c901",
+			"Name": "Yoda",
+			"Description": ""
+		},
+		{
+			"id": "34b047c0-078a-11e9-ba9b-3bdce152c901",
+			"Name": "Vader",
+			"Description": ""
+		}
+	]
+}
