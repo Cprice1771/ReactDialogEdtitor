@@ -22,7 +22,7 @@ class ActionEditor extends Component {
             }}
             value={this.props.Action.Name}/></label>
         </div>
-        <div className="col-md-3">
+        <div className="col-md-4">
             <label className="label-display">Description<input type="text" 
             onChange={x =>{
                 let copy = _.cloneDeep(this.props.Action);
@@ -31,7 +31,7 @@ class ActionEditor extends Component {
             }}
             value={this.props.Action.Description}/></label>
         </div>
-        <div className="col-md-2">
+        <div className="col-md-4">
             <label className="label-display">End node
                 <select value={this.props.Action.EndAt}
                     onChange={x =>{
@@ -46,7 +46,7 @@ class ActionEditor extends Component {
                 </select>
             </label>
         </div>
-        <div className="col-md-3">
+        {/* <div className="col-md-3">
             <button className="btn btn-primary" onClick={() => {  
                     let copy = _.cloneDeep(this.props.Action);
 
@@ -61,7 +61,7 @@ class ActionEditor extends Component {
                     });
                     this.props.onActionChange(copy);
                     }}>Add Req</button>
-        </div>
+        </div> */}
         <div className="col-md-2">
             <button className="btn btn-danger" onClick={() => { this.props.deleteAction(this.props.Action.id)}}>Delete</button>
         </div>
