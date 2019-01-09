@@ -6,7 +6,7 @@ import GraphView from 'react-digraph'
 const GraphConfig =  {
     NodeTypes: {
       Start: {
-        typeText: '',
+        typeText: 'Start',
         shapeId: "#start",
         shape: (
           <symbol viewBox="0 0 100 100" id="start" key="0">
@@ -15,7 +15,7 @@ const GraphConfig =  {
         )
       },
       End: {
-        typeText: '',
+        typeText: 'End',
         shapeId: "#end",
         shape: (
           <symbol viewBox="0 0 100 100" id="end" key="1">
@@ -24,7 +24,7 @@ const GraphConfig =  {
         )
       },
       Dialogue: {
-        typeText: '',
+        typeText: 'Dialogue',
         shapeId: "#dialogue",
         shape: (
           <symbol viewBox="0 0 100 100" id="dialogue" key="2">

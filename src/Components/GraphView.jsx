@@ -72,6 +72,7 @@ class GraphView extends Component {
         Name: 'New Action',
         Description: '',
         EndAt: nodeId,
+        Requirements: []
       });
   
       this.setState({

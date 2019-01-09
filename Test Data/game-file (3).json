@@ -1,0 +1,253 @@
+{
+	"nodes": [
+		{
+			"id": "1",
+			"Name": "Start Node",
+			"NodeType": "Start",
+			"Description": "Where the game starts",
+			"Conversation": [
+				{
+					"id": "1",
+					"Speaker": "narrator",
+					"Text": "Choose the light Side",
+					"CharacterId": "4c4e8c80-07fc-11e9-acfc-5d8db17296e2"
+				},
+				{
+					"id": "8b80fc30-07fc-11e9-acfc-5d8db17296e2",
+					"Speaker": "narrator",
+					"Text": "Let me show you your true potential",
+					"CharacterId": "4c9cfaa0-07fc-11e9-acfc-5d8db17296e2"
+				}
+			],
+			"x": -16.620648078620434,
+			"y": -534.3710836172104,
+			"Actions": [
+				{
+					"id": "220f6ca0-07fc-11e9-acfc-5d8db17296e2",
+					"Name": "LightSide",
+					"Description": "",
+					"EndAt": "19809140-07fc-11e9-acfc-5d8db17296e2"
+				},
+				{
+					"id": "26524670-07fc-11e9-acfc-5d8db17296e2",
+					"Name": "New Action",
+					"Description": "",
+					"EndAt": "25340530-07fc-11e9-acfc-5d8db17296e2"
+				}
+			],
+			"title": "Start Node",
+			"type": "Start"
+		},
+		{
+			"id": "2",
+			"Name": "End Node",
+			"NodeType": "End",
+			"Description": "Where the game ends",
+			"Conversation": [
+				{
+					"id": "1",
+					"Speaker": "narrator",
+					"Text": "Goodbye World"
+				}
+			],
+			"x": -30.5889892578125,
+			"y": 496.7767868041992,
+			"Actions": [],
+			"title": "End Node",
+			"type": "End"
+		},
+		{
+			"id": "19809140-07fc-11e9-acfc-5d8db17296e2",
+			"Name": "Light Side",
+			"Description": "",
+			"NodeType": "Dialogue",
+			"Text": "",
+			"x": 213.6666717529297,
+			"y": -289.3333492279053,
+			"Actions": [
+				{
+					"id": "37af5020-07fc-11e9-acfc-5d8db17296e2",
+					"Name": "New Action",
+					"Description": "",
+					"EndAt": "35346510-07fc-11e9-acfc-5d8db17296e2"
+				}
+			],
+			"Conversation": [
+				{
+					"id": "968f5680-07fc-11e9-acfc-5d8db17296e2",
+					"Speaker": "narrator",
+					"Text": "Good, young padawan\n",
+					"CharacterId": "4c4e8c80-07fc-11e9-acfc-5d8db17296e2"
+				},
+				{
+					"id": "9ac2ee10-07fc-11e9-acfc-5d8db17296e2",
+					"Speaker": "narrator",
+					"Text": "Nooo!",
+					"CharacterId": "4c9cfaa0-07fc-11e9-acfc-5d8db17296e2"
+				}
+			],
+			"title": "New Node",
+			"type": "Dialogue"
+		},
+		{
+			"id": "25340530-07fc-11e9-acfc-5d8db17296e2",
+			"Name": "Dark Side",
+			"Description": "",
+			"NodeType": "Dialogue",
+			"Text": "",
+			"x": -253,
+			"y": -257.33333587646484,
+			"Actions": [
+				{
+					"id": "385a5d30-07fc-11e9-acfc-5d8db17296e2",
+					"Name": "New Action",
+					"Description": "",
+					"EndAt": "35346510-07fc-11e9-acfc-5d8db17296e2"
+				}
+			],
+			"Conversation": [
+				{
+					"id": "a201f0e0-07fc-11e9-acfc-5d8db17296e2",
+					"Speaker": "narrator",
+					"Text": "Well chosen my new apprentice ",
+					"CharacterId": "4c9cfaa0-07fc-11e9-acfc-5d8db17296e2"
+				},
+				{
+					"id": "a24dc6f0-07fc-11e9-acfc-5d8db17296e2",
+					"Speaker": "narrator",
+					"Text": "Mistake, you have made",
+					"CharacterId": "4c4e8c80-07fc-11e9-acfc-5d8db17296e2"
+				}
+			],
+			"title": "New Node",
+			"type": "Dialogue"
+		},
+		{
+			"id": "30530150-07fc-11e9-acfc-5d8db17296e2",
+			"Name": "Yoda",
+			"Description": "",
+			"NodeType": "Dialogue",
+			"Text": "",
+			"x": 248.52932739257812,
+			"y": 208.40145111083984,
+			"Actions": [
+				{
+					"id": "3c2d8540-07fc-11e9-acfc-5d8db17296e2",
+					"Name": "New Action",
+					"Description": "",
+					"EndAt": "2"
+				}
+			],
+			"Conversation": [
+				{
+					"id": "d2c63970-07fc-11e9-acfc-5d8db17296e2",
+					"Speaker": "narrator",
+					"Text": "Let's go home Yoda"
+				}
+			],
+			"title": "Yoda",
+			"type": "Dialogue"
+		},
+		{
+			"id": "35346510-07fc-11e9-acfc-5d8db17296e2",
+			"Name": "Chose",
+			"Description": "",
+			"NodeType": "Dialogue",
+			"Text": "",
+			"x": -14.482434272766113,
+			"y": -12.799189567565918,
+			"Actions": [
+				{
+					"id": "39fbb120-07fc-11e9-acfc-5d8db17296e2",
+					"Name": "Leave With Vader",
+					"Description": "",
+					"EndAt": "2d25dd40-07fc-11e9-acfc-5d8db17296e2"
+				},
+				{
+					"id": "3a9f1d10-07fc-11e9-acfc-5d8db17296e2",
+					"Name": "Leave alone",
+					"Description": "",
+					"EndAt": "30530150-07fc-11e9-acfc-5d8db17296e2"
+				},
+				{
+					"id": "41739e40-07fc-11e9-acfc-5d8db17296e2",
+					"Name": "Leave with Yoda",
+					"Description": "",
+					"EndAt": "3ffba440-07fc-11e9-acfc-5d8db17296e2"
+				}
+			],
+			"Conversation": [],
+			"title": "New Node",
+			"type": "Dialogue"
+		},
+		{
+			"id": "3ffba440-07fc-11e9-acfc-5d8db17296e2",
+			"Name": "Alone",
+			"Description": "",
+			"NodeType": "Dialogue",
+			"Text": "",
+			"x": -11.610610961914062,
+			"y": 208.9208221435547,
+			"Actions": [
+				{
+					"id": "4217cd80-07fc-11e9-acfc-5d8db17296e2",
+					"Name": "New Action",
+					"Description": "",
+					"EndAt": "2"
+				}
+			],
+			"Conversation": [
+				{
+					"id": "d7cb9ff0-07fc-11e9-acfc-5d8db17296e2",
+					"Speaker": "narrator",
+					"Text": "I'm leaving alone"
+				}
+			],
+			"title": "Alone",
+			"type": "Dialogue"
+		}
+	],
+	"characters": [
+		{
+			"id": "narrator",
+			"Name": "Narrator",
+			"Description": "Narrator for the story"
+		},
+		{
+			"id": "4c4e8c80-07fc-11e9-acfc-5d8db17296e2",
+			"Name": "Yoda",
+			"Description": ""
+		},
+		{
+			"id": "4c9cfaa0-07fc-11e9-acfc-5d8db17296e2",
+			"Name": "Darth Vader",
+			"Description": ""
+		}
+	],
+	"gameState": [
+		{
+			"id": "647e90c0-07fc-11e9-acfc-5d8db17296e2",
+			"name": "Charisma",
+			"defaultValue": "10",
+			"type": "num",
+			"enumValues": []
+		},
+		{
+			"id": "64f06560-07fc-11e9-acfc-5d8db17296e2",
+			"name": "Side",
+			"defaultValue": 0,
+			"type": "enum",
+			"enumValues": [
+				"Light Side",
+				"Dark Side"
+			]
+		},
+		{
+			"id": "6559ae80-07fc-11e9-acfc-5d8db17296e2",
+			"name": "Chose Light",
+			"defaultValue": 0,
+			"type": "bool",
+			"enumValues": []
+		}
+	]
+}
